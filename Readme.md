@@ -1,7 +1,7 @@
 # World Interactions
-Create interaction points in the world with selectable options.
+Crie interações no mundo com opções selecionáveis
 
-# Credits
+# Créditos
 [ChatDisabled](https://github.com/Chatdisabled)
 
 [Devyn](https://github.com/darktrovx)
@@ -10,21 +10,55 @@ Create interaction points in the world with selectable options.
 
 [Snipe](https://github.com/pushkart2)
 
-# Guides & Information
+# Guias e Demos (inglês)
 
 [Video Demo 1](https://youtu.be/dQ7Pdq1pdHQ)
 [Video Demo 2](https://youtu.be/9ZLK0kl2k94)
 
-Requires [ox_lib](https://github.com/overextended/ox_lib)
+Necessário [ox_lib](https://github.com/overextended/ox_lib)
 
-Options can trigger
+Opções de Interação
 ```
 Functions
 Client Events
 Server Events
 ```
 
-# Options Format
+# Compatibilidade com ox\_target
+
+Este recurso fornece uma camada de compatibilidade para substituir completamente o `ox_target` usando o sistema `interact`, **sem precisar modificar scripts existentes**. Ele intercepta chamadas de export do `ox_target` e redireciona para o sistema `exports.interact`, garantindo compatibilidade com todas as funcionalidades essenciais.
+
+## Métodos implementados
+
+| Método                | Implementado? | Observações  |
+| --------------------- | ------------- | ------------ |
+| `addGlobalPlayer`     | ✅             | Implementado |
+| `removeGlobalPlayer`  | ✅             | Implementado |
+| `addGlobalVehicle`    | ✅             | Implementado |
+| `removeGlobalVehicle` | ✅             | Implementado |
+| `addModel`            | ✅             | Implementado |
+| `removeModel`         | ✅             | Implementado |
+| `addEntity`           | ✅             | Implementado |
+| `removeEntity`        | ✅             | Implementado |
+| `addSphereZone`       | ✅             | Implementado |
+| `addBoxZone`          | ✅             | Implementado |
+| `removeZone`          | ✅             | Implementado |
+
+## Métodos ainda não implementados
+
+| Método               | Requer implementação? | Como adaptar                                   |
+| -------------------- | --------------------- | ---------------------------------------------- |
+| `addGlobalOption`    | ✅ Sim                 | Adicionar interação global com base no jogador |
+| `removeGlobalOption` | ✅ Sim                 | Remover por `id` genérico                      |
+| `addGlobalObject`    | ✅ Sim                 | Mapear como `addModel` ou `addEntity`          |
+| `removeGlobalObject` | ✅ Sim                 | Igual a `removeModel`/`removeEntity`           |
+| `addGlobalPed`       | ✅ Sim                 | Usar `addEntity` com checagem de tipo          |
+| `removeGlobalPed`    | ✅ Sim                 | Igual a `removeEntity`                         |
+| `addPolyZone`        | ⚠️ Talvez             | Adaptar para centro e raio aproximado          |
+
+---
+
+# Formato das opções
 
 ```lua
  {

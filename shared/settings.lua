@@ -21,4 +21,5 @@ return {
         onVehicle = true, -- Disable interactions while in a vehicle
         onHandCuff = true, -- Disable interactions while handcuffed
     },
+    ReplaceOxTarget = true, -- Replace ox_target with this script
 }
